@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+{%block header%}this is Index page !{%endblock%}
+{%block main%}
+<h1> რეგისტრაცია </h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.username(class="form-control mb-2") }}
+    {{ form.password(class="form-control mb-2") }}
+    {{ form.submit(class="btn btn-success") }}
+</form>
+
+<h4>ბაზის მომხმარებლების სია (სატესტოდ)</h4>
+<ul>
+    {% for users in userlist %}
+    <li>{{users.username}}</li>
+    <li>{{users.password}}</li>
+    {% endfor %}
+</ul>
+{%endblock%}
+
+
+
+
+
