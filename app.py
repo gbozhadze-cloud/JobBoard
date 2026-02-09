@@ -17,8 +17,6 @@ with app.app_context():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    form = StudentListForm
-    studentlist = Students.query.all
     return render_template('index.html')
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -26,12 +24,18 @@ def register():
     form = RegistrationForm()
     userlist = User.query.all()
     if form.validate_on_submit():
-        user = User(username=form.username.data,password=form.password.data)
+        user = User(username=form.username.data,
+                    password=form.password.data,
+                    email=form.email.data
+                    )
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('index'))
     return render_template('register.html', form=form, userlist=userlist)
 
+@app.context_processor
+def inject_now():
+    return {'current_year': datetime.now().year}
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -73,36 +77,6 @@ def addnote():
     return render_template('add_note.html' , form=form )
 
 
-@app.route('/add', methods=['GET', 'POST'])
-def add ():
-    form = AddStudent
-
-    if form.validate_on_submit():
-        studentsdetails = Students(name=form.name.data, email=form.email.data, course=form.course.data,
-                                   value=form.value.data, date=form.date.data)
-        db.session.add(studentsdetails)
-        db.session.commit()
-        return redirect(url_for('index'))
-    return render_template('add.html', form=form)
-
-
-
-
-
-
-    return render_template('add.html')
-
-
-
-
-
-
-
-
-
-
-
-
 
 @app.route('/about', methods=['GET', 'POST'])
 def about ():
@@ -117,21 +91,4 @@ def contact():
 
 if __name__ == '__main__':
     app.run(debug=True)
-#
-# @app.route('/namravli/<int:a>/<int:b>', methods=['GET', 'POST'])
-# def namravli (a, b):
-#     return f"პირველი რიცხვი: {a}, მეორე რიცხვი: {b}, ნამრავლი უდრის {a*b}"
-#
-# @app.route('/myjson', methods=['GET', 'POST'])
-# def myjson ():
-#     return {
-#   "name": "John Doe",
-#   "age": 30,
-#   "email": "john.doe@example.com",
-#   "isActive": "True"
-# }
-#
-# @app.route('/misalmeba/<string:name>', methods=['GET', 'POST'])
-# def misalmeba (name):
-#     return f"გამარჯობა მომხმარებელო: {name}"
-#
+

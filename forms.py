@@ -1,24 +1,17 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, DateTimeField, IntegerField, SubmitField,PasswordField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, EqualTo, Email
 
-
-class AddStudent(FlaskForm):
-    name = StringField('Student Name', validators=[DataRequired()])
-    email = EmailField('Email', validators=[DataRequired()])
-    course = StringField('Course Name', validators=[DataRequired()])
-    value = IntegerField('Value', validators=[DataRequired()])
-    date = DateTimeField('Date', validators=[DataRequired()])
-    sumbit = SubmitField('Submit')
-
-class StudentListForm(FlaskForm):
-    pass
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Register')
+    username = StringField('მომხმარებლის სახელი', validators=[DataRequired()])
+    email = EmailField('ელ. ფოსტა', validators=[DataRequired(), Email()])
+    password = PasswordField('პაროლი', validators=[DataRequired()])
+    confirm_password = PasswordField('გაიმეორე პაროლი',
+                                     validators=[DataRequired(), EqualTo('password',
+                                     message='პაროლები არ ემთხვევა!')])
+    submit = SubmitField('რეგისტრაცია')
 
 
 class LoginForm(FlaskForm):

@@ -1,25 +1,47 @@
-
 {% extends "base.html" %}
-{%block header%}this is Index page !{%endblock%}
-{%block main%}
-<h1> რეგისტრაცია </h1>
-<form method="POST">
-    {{ form.hidden_tag() }}
-    {{ form.username(class="form-control mb-2") }}
-    {{ form.password(class="form-control mb-2") }}
-    {{ form.submit(class="btn btn-success") }}
-</form>
 
-<h4>ბაზის მომხმარებლების სია (სატესტოდ)</h4>
-<ul>
-    {% for users in userlist %}
-    <li>{{users.username}}</li>
-    <li>{{users.password}}</li>
-    {% endfor %}
-</ul>
-{%endblock%}
+{% block header %}
 
+{% endblock %}
 
+{% block main %}
+<div class="container mt-4">
+    <h1 class="mb-4">რეგისტრაცია</h1>
 
+    <form method="POST">
+        {{ form.hidden_tag() }}
 
+        <div class="col-md-6">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control") }}
+        </div>
 
+        <div class="col-md-6">
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control") }}
+        </div>
+        <div class="col-md-6">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control") }}
+        </div>
+        <div class="col-md-6">
+            {{ form.confirm_password.label(class="form-label") }}
+            {{ form.confirm_password(class="form-control") }}
+        </div>
+
+        <div class="col-md-6">
+            {{ form.submit(class="btn btn-success") }}
+        </div>
+    </form>
+
+<!--    <h4 class="mt-5">ბაზის მომხმარებლების სია (სატესტოდ)</h4>-->
+<!--    <ul class="list-group">-->
+<!--        {% for user in userlist %}-->
+<!--            <li class="list-group-item">-->
+<!--                <strong>Username:</strong> {{ user.username }}<br>-->
+<!--                <strong>Password:</strong> {{ user.password }}-->
+<!--            </li>-->
+<!--        {% endfor %}-->
+<!--    </ul>-->
+</div>
+{% endblock %}
