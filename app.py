@@ -5,8 +5,6 @@ from models import *
 from db import *
 
 
-
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'MYSUPERSECRET'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
