@@ -1,14 +1,46 @@
 
 {% extends "base.html" %}
-{%block header%}this is Index page !{%endblock%}
+{%block header%}{%endblock%}
 {%block main%}
-<h1> ავტორიზაცია </h1>
-<form method="POST">
-    {{ form.hidden_tag() }}
-    {{ form.username(class="form-control mb-2") }}
-    {{ form.password(class="form-control mb-2") }}
-    {{ form.submit(class="btn btn-success") }}
-</form>
+
+{% if form.errors %}
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+        {% for field, errors in form.errors.items() %}
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<div class="container mt-4">
+    <h1 class="mb-4">ავტორიზაცია</h1>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="col-md-6">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control") }}
+        </div>
+        <div class="col-md-6">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control") }}
+        </div>
+        <div class="col-md-6">
+            {{ form.submit(class="btn btn-success") }}
+        </div>
+    </form>
+</div>
+
+<!--<form method="POST">-->
+<!--    {{ form.hidden_tag() }}-->
+<!--    {{ form.username(class="form-control mb-2") }}-->
+<!--    {{ form.password(class="form-control mb-2") }}-->
+<!--    {{ form.submit(class="btn btn-success") }}-->
+<!--</form>-->
 
 {%endblock%}
 

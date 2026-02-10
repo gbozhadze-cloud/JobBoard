@@ -8,7 +8,13 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
 
 
-class Note(db.Model):
+class Jobs(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
-    note_userid = db.Column(db.String(200), nullable=False)
+    job_desc = db.Column(db.String(400), nullable=False)
+    job_desc_detailed = db.Column(db.String(800), nullable=False)
+    company = db.Column(db.String(200), nullable=False)
+    salary =  db.Column(db.Integer(), nullable=False)
+    location = db.Column(db.String(200), nullable=False)
+    author = db.Column(db.String(200), nullable=False)
+

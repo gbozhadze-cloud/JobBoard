@@ -5,6 +5,17 @@
 {% endblock %}
 
 {% block main %}
+{% if form.errors %}
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+        {% for field, errors in form.errors.items() %}
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}
 <div class="container mt-4">
     <h1 class="mb-4">რეგისტრაცია</h1>
 
@@ -34,14 +45,14 @@
         </div>
     </form>
 
-<!--    <h4 class="mt-5">ბაზის მომხმარებლების სია (სატესტოდ)</h4>-->
-<!--    <ul class="list-group">-->
-<!--        {% for user in userlist %}-->
-<!--            <li class="list-group-item">-->
-<!--                <strong>Username:</strong> {{ user.username }}<br>-->
-<!--                <strong>Password:</strong> {{ user.password }}-->
-<!--            </li>-->
-<!--        {% endfor %}-->
-<!--    </ul>-->
+    <h4 class="mt-5">ბაზის მომხმარებლების სია (სატესტოდ)</h4>
+    <ul class="list-group">
+        {% for user in userlist %}
+            <li class="list-group-item">
+                <strong>Username:</strong> {{ user.username }}<br>
+                <strong>Password:</strong> {{ user.password }}
+            </li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
