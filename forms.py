@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, DateTimeField, IntegerField, SubmitField,PasswordField
+from wtforms import StringField, EmailField, DateTimeField, IntegerField, SubmitField, PasswordField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo, Email, ValidationError
 from models import *
 
@@ -46,6 +46,21 @@ class LoginForm(FlaskForm):
 
 
 
-class NoteForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
+class AddJobForm(FlaskForm):
+    title = StringField('ვაკანსიის დასახელება', validators=[DataRequired()])
+    job_desc = StringField('ვაკანსიის აღწერა', validators=[DataRequired()])
+    job_desc_detailed = TextAreaField("დეტალური აღწერა", validators=[DataRequired()])
+    company = StringField('კომპანიის დასახელება', validators=[DataRequired()])
+    salary = IntegerField('განსაზღვრული ხელფასი', validators=[DataRequired()])
+    location = StringField('ლოკაცია', validators=[DataRequired()])
     submit = SubmitField('Post')
+
+class JobListForm(FlaskForm):
+    id = StringField('id')
+    title = StringField('ვაკანსიის დასახელება')
+    job_desc = StringField('ვაკანსიის აღწერა')
+    job_desc_detailed = TextAreaField("დეტალური აღწერა")
+    company = StringField('კომპანიის დასახელება')
+    salary = StringField('განსაზღვრული ხელფასი')
+    location = StringField('ლოკაცია')
+    author = StringField('ავტორი')

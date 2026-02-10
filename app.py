@@ -17,7 +17,9 @@ with app.app_context():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    form=JobListForm
+    joblist = Jobs.query.all()
+    return render_template('index.html', form=form, joblist=joblist)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -42,6 +44,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.password == form.password.data:
             session["user_id"] = user.id
+            session["username"] = user.username
             return redirect (url_for('index'))
     return render_template('login.html', form=form)
 
@@ -64,15 +67,21 @@ def notes():
 
 @app.route('/add_job', methods=['GET', 'POST'])
 def add_job():
-    form = NoteForm()
+    form = AddJobForm()
     if form.validate_on_submit():
-        new_note = Jobs(
+        new_job = Jobs(
             title = form.title.data,
-            note_userid = session["user_id"],
+            job_userid = session["user_id"],
+            author = session["username"],
+            job_desc = form.job_desc.data,
+            job_desc_detailed = form.job_desc_detailed.data,
+            company = form.company.data,
+            salary=form.salary.data,
+            location=form.location.data
         )
-        db.session.add(new_note)
+        db.session.add(new_job)
         db.session.commit()
-        return redirect (url_for('notes'))
+        return redirect (url_for('index'))
     return render_template('add_job.html' , form=form )
 
 @app.route('/about', methods=['GET', 'POST'])

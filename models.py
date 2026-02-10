@@ -10,6 +10,7 @@ class User(db.Model):
 
 class Jobs(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    job_userid = db.Column(db.Integer, nullable=False)
     title = db.Column(db.String(200), nullable=False)
     job_desc = db.Column(db.String(400), nullable=False)
     job_desc_detailed = db.Column(db.String(800), nullable=False)

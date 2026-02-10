@@ -1,11 +1,74 @@
 {% extends "base.html" %}
 {%block header%}{%endblock%}
 {%block main%}
-<h1>Add Note</h1>
-<form method="POST">
-    {{ form.hidden_tag() }}
-    {{ form.title (class="form-control mb-2") }}
-    {{ form.submit(class="btn btn-success") }}
-</form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">ახაილ ვაკანსიის დამატება</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+
+                        <div class="mb-3">
+                            {{ form.title.label(class="form-label") }}
+                            {{ form.title(class="form-control") }}
+                            {% for error in form.title.errors %}
+                                <div class="text-danger small">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.job_desc.label(class="form-label") }}
+                            {{ form.job_desc(class="form-control") }}
+                            {% for error in form.job_desc.errors %}
+                                <div class="text-danger small">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.job_desc_detailed.label(class="form-label") }}
+                            {{ form.job_desc_detailed(class="form-control", rows="4") }}
+                            {% for error in form.job_desc_detailed.errors %}
+                                <div class="text-danger small">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.company.label(class="form-label") }}
+                            {{ form.company(class="form-control") }}
+                            {% for error in form.company.errors %}
+                                <div class="text-danger small">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.salary.label(class="form-label") }}
+                            {{ form.salary(class="form-control") }}
+                            {% for error in form.salary.errors %}
+                                <div class="text-danger small">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.location.label(class="form-label") }}
+                            {{ form.location(class="form-control") }}
+                            {% for error in form.location.errors %}
+                                <div class="text-danger small">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="d-grid">
+                            {{ form.submit(class="btn btn-success btn-lg") }}
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {%endblock%}

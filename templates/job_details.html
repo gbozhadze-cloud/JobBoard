@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block main %}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">{{ job.title }}</h4>
+        </div>
+        <div class="card-body">
+
+            <h5 class="text-muted">{{ job.company }}</h5>
+
+            <hr>
+
+            <p><strong>Short Description:</strong></p>
+            <p>{{ job.job_desc }}</p>
+
+            <p><strong>Detailed Description:</strong></p>
+            <p style="white-space: pre-line;">{{ job.job_desc_detailed }}</p>
+
+            <hr>
+
+            <p><strong>Salary:</strong> {{ job.salary }}</p>
+            <p><strong>Location:</strong> {{ job.location }}</p>
+            <p><strong>Author:</strong> {{ job.author }}</p>
+
+            <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">⬅ Back</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
