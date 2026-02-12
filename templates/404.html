@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="container text-center mt-5">
+    <h1 class="display-4 text-danger">404</h1>
+    <p class="lead">აღნიშნული გვერდი სამწუხაროდ ვერ მოიძებნა :(</p>
+    <a href="{{ url_for('index') }}" class="btn btn-primary mt-3">კიდევ სცადეთ</a>
+</div>
+{% endblock %}

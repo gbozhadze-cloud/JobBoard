@@ -1,7 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, DateTimeField, IntegerField, SubmitField, PasswordField, TextAreaField
+from wtforms import StringField, EmailField, FileField, IntegerField, SubmitField, PasswordField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo, Email, ValidationError, Length
 from models import *
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_wtf.file import FileAllowed
 
 
 
@@ -37,7 +39,7 @@ class LoginForm(FlaskForm):
 
         user = User.query.filter_by(username=self.username.data).first()
 
-        if not user or user.password != self.password.data:
+        if not user or not check_password_hash(user.password, self.password.data):
             self.username.errors = list(self.username.errors) + ["არასწორი მომხმარებელი ან პაროლი!"]
             return False
 
@@ -73,3 +75,9 @@ class JobForm(FlaskForm):
     job_desc = TextAreaField('ვაკანსიის აღწერა', validators=[DataRequired(), Length(max=400)])
     job_desc_detailed = TextAreaField('დეტალური აღწერა', validators=[DataRequired(), Length(max=800)])
     submit = SubmitField('Post')
+
+class ProfileForm(FlaskForm):
+    username = StringField('მომხმარებლის სახელი', validators=[DataRequired(), Length(max=50)])
+    email = StringField('Email', validators=[DataRequired(), Email(), Length(max=100)])
+    profile_pic = FileField('სურათი', validators=[FileAllowed(['jpg', 'png', 'jpeg'], 'მხოლოდ სურათები დაშვებულია')])
+    submit = SubmitField('შენახვა')
