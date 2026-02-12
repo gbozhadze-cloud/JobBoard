@@ -9,7 +9,7 @@
         <div class="col-sm-6 col-lg-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <div class="card-body d-flex flex-column">
-
+                    <h5 class="card-title text-primary">{{ job.date_added }}</h5>
                     <h5 class="card-title text-primary">{{ job.title }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ job.company }}</h6>
 
@@ -26,13 +26,16 @@
                     </p>
 
                     <div class="mt-auto">
-                        <a href="#" class="btn btn-primary w-100">დეტალურად ნახვა</a>
+                        <a href="{{ url_for('job_details', job_id=job.id) }}" class="btn btn-primary w-100">დეტალურად ნახვა</a>
                     </div>
 
                 </div>
 
                 <div class="card-footer text-muted small">
-                    ავტორი: {{ job.author }}
+                        ავტორი:
+                        <a href="{{ url_for('jobs_by_author', author=job.author) }}" class="text-decoration-none">
+                        {{ job.author }}
+                        </a>
                 </div>
             </div>
         </div>

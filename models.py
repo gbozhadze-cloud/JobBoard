@@ -1,5 +1,5 @@
 from db import db
-
+from datetime import date
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -18,4 +18,5 @@ class Jobs(db.Model):
     salary =  db.Column(db.Integer(), nullable=False)
     location = db.Column(db.String(200), nullable=False)
     author = db.Column(db.String(200), nullable=False)
+    date_added = db.Column(db.Date, nullable=False, default=date.today)
 

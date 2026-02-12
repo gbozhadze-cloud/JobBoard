@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from datetime import datetime
 from forms import *
 from models import *
 from db import *
+
 
 
 app = Flask(__name__)
@@ -59,11 +60,6 @@ def profile():
     return render_template('profile.html')
 
 
-@app.route('/notes', methods=['GET', 'POST'])
-def notes():
-    user_notes = Jobs.query.filter_by(note_userid=session["user_id"]).all()
-    return render_template('notes.html', notes=user_notes)
-
 
 @app.route('/add_job', methods=['GET', 'POST'])
 def add_job():
@@ -83,6 +79,54 @@ def add_job():
         db.session.commit()
         return redirect (url_for('index'))
     return render_template('add_job.html' , form=form )
+
+
+@app.route("/job/<int:job_id>")
+def job_details(job_id):
+    job = Jobs.query.get_or_404(job_id)
+    return render_template("job_details.html", job=job)
+
+@app.route("/author/<author>")
+def jobs_by_author(author):
+    jobs = Jobs.query.filter_by(author=author).order_by(Jobs.date_added.desc()).all()
+    return render_template("jobs_by_author.html", jobs=jobs, author=author)
+
+@app.route("/job/<int:job_id>/edit", methods=["GET", "POST"])
+def edit_job(job_id):
+    job = Jobs.query.get_or_404(job_id)
+
+    if 'username' not in session or job.author != session['username']:
+        flash("თქვენ არ გაქვთ უფლებები ამ ვაკანსიის რედაქტირებისათვის", "danger")
+        return redirect(url_for("job_details", job_id=job_id))
+
+    form = JobForm(obj=job)  # pre-fill with existing job info
+    if form.validate_on_submit():
+        job.title = form.title.data
+        job.company = form.company.data
+        job.location = form.location.data
+        job.salary = form.salary.data
+        job.job_desc = form.job_desc.data
+        job.job_desc_detailed = form.job_desc_detailed.data
+        db.session.commit()
+        flash("ვაკანსია წარმატებით განახლდა", "success")
+        return redirect(url_for("job_details", job_id=job.id))
+
+    return render_template("edit_job.html", form=form, job=job)
+
+
+@app.route("/job/<int:job_id>/delete", methods=["POST"])
+def delete_job(job_id):
+    job = Jobs.query.get_or_404(job_id)
+
+    if 'username' not in session or job.author != session['username']:
+        flash("თქვენ არ გაქვთ უფლებები ამ ვაკანსიის წაშლისათვის", "danger")
+        return redirect(url_for("job_details", job_id=job_id))
+
+    db.session.delete(job)
+    db.session.commit()
+    flash("ვაკანსია წარმატებით წაიშალა", "success")
+    return redirect(url_for("index"))
+
 
 @app.route('/about', methods=['GET', 'POST'])
 def about ():

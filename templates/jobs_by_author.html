@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block main %}
+
+<div class="container mt-4">
+    <h3 class="mb-4 text-center">
+        ვაკანსიები ავტორისგან: <span class="text-primary">{{ author }}</span>
+    </h3>
+
+    <div class="row">
+        {% for job in jobs %}
+        <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+
+                    <h5 class="card-title text-primary">{{ job.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ job.company }}</h6>
+
+                    <p><strong>ლოკაცია:</strong> {{ job.location }}</p>
+                    <p><strong>ხელფასი:</strong> {{ job.salary }}</p>
+
+                    <p>{{ job.job_desc }}</p>
+
+                    <div class="mt-auto">
+                        <a href="{{ url_for('job_details', job_id=job.id) }}" class="btn btn-primary w-100">
+                            დეტალურად ნახვა
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="card-footer text-muted small">
+                    დამატებულია: {{ job.date_added }}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <div class="alert alert-info text-center">
+                ამ ავტორს ვაკანსიები არ აქვს.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">ყველა ვაკანსია</a>
+    </div>
+
+</div>
+
+{% endblock %}

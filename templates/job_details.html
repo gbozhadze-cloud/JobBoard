@@ -3,28 +3,38 @@
 
 <div class="container mt-5">
     <div class="card shadow">
-        <div class="card-header bg-success text-white">
-            <h4 class="mb-0">{{ job.title }}</h4>
-        </div>
         <div class="card-body">
 
+            <h2 class="text-primary">{{ job.title }}</h2>
             <h5 class="text-muted">{{ job.company }}</h5>
+            <hr>
+
+            <p><strong>ლოკაცია:</strong> {{ job.location }}</p>
+            <p><strong>ხელფასი:</strong> {{ job.salary }}</p>
+            <p><strong>დამატების თარიღი:</strong> {{ job.date_added }}</p>
+            <p><strong>ავტორი:</strong> {{ job.author }}</p>
 
             <hr>
 
-            <p><strong>Short Description:</strong></p>
+            <h5>მოკლე აღწერა</h5>
             <p>{{ job.job_desc }}</p>
 
-            <p><strong>Detailed Description:</strong></p>
-            <p style="white-space: pre-line;">{{ job.job_desc_detailed }}</p>
+            <h5 class="mt-4">დეტალური აღწერა</h5>
+            <p>{{ job.job_desc_detailed }}</p>
 
-            <hr>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">
+                უკან დაბრუნება
+            </a>
+                {% if session['username'] == job.author %}
+                    <a href="{{ url_for('edit_job', job_id=job.id) }}" class="btn btn-warning">რედაქტირება</a>
 
-            <p><strong>Salary:</strong> {{ job.salary }}</p>
-            <p><strong>Location:</strong> {{ job.location }}</p>
-            <p><strong>Author:</strong> {{ job.author }}</p>
-
-            <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">⬅ Back</a>
+                    <form action="{{ url_for('delete_job', job_id=job.id) }}" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('გინდათ ნამდვილად წაშალოთ ვაკანსია?')">
+                            წაშლა
+                        </button>
+                    </form>
+                {% endif %}
         </div>
     </div>
 </div>
