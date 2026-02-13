@@ -15,6 +15,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'MYSUPERSECRET'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['UPLOAD_FOLDER'] = "static/images"
 
 db.init_app(app)
 
@@ -101,11 +102,11 @@ def profile():
 
         # სურათის ატვირთვა
         if form.profile_pic.data:
-            pic_file = form.profile_pic.data
-            filename = secure_filename(pic_file.filename)
-            filepath = os.path.join('static/uploads', filename)
-            pic_file.save(filepath)
-            user.profile_pic = filepath
+            image_file = form.profile_pic.data
+            filename = image_file.filename
+            image_path = os.path.join(app.config['UPLOAD_FOLDER'],filename)
+            image_file.save(image_path)
+            user.profile_pic = filename
 
         db.session.commit()
         session['username'] = user.username

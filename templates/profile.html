@@ -6,8 +6,9 @@
         {{ form.hidden_tag() }}
 
         <div class="mb-3">
-            {% if user.profile_pic %}
-            <img src="{{ url_for('static', filename=user.profile_pic.split('static/')[1]) }}" alt="Profile Picture" class="img-thumbnail" width="150">
+           {% if user.profile_pic %}
+              <img src="{{ url_for('static', filename='images/' + user.profile_pic) }}"
+                 alt="Profile Picture" class="img-thumbnail" width="150">
             {% endif %}
             {{ form.profile_pic.label }}
             {{ form.profile_pic(class="form-control") }}

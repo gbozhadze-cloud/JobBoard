@@ -79,5 +79,5 @@ class JobForm(FlaskForm):
 class ProfileForm(FlaskForm):
     username = StringField('მომხმარებლის სახელი', validators=[DataRequired(), Length(max=50)])
     email = StringField('Email', validators=[DataRequired(), Email(), Length(max=100)])
-    profile_pic = FileField('სურათი', validators=[FileAllowed(['jpg', 'png', 'jpeg'], 'მხოლოდ სურათები დაშვებულია')])
+    profile_pic = FileField('სურათი', validators=[FileAllowed(['jpg', 'png', 'jpeg'], 'მხოლოდ სურათებია დაშვებული')])
     submit = SubmitField('შენახვა')
