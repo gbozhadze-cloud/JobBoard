@@ -1,15 +1,13 @@
 import os
-
+import requests
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from datetime import datetime
-
-from werkzeug.utils import secure_filename
-
 from forms import *
 from models import *
 from db import *
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
+import logging
 
 
 app = Flask(__name__)
@@ -22,6 +20,7 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
+logging.basicConfig(filename='logs/myapp.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def login_required(f):  #ამ დეკორატორს აქ გადაეცემა ჩვენი როუტის ფუნციები შემდეგში
     @wraps(f)           # ეს შეუნახავს ორიგინალ ფუნქციის სახელებს ფლასკს
@@ -35,9 +34,21 @@ def login_required(f):  #ამ დეკორატორს აქ გად�
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+
     form=JobListForm()
     joblist = Jobs.query.all()
-    return render_template('index.html', form=form, joblist=joblist)
+    # ვალუტის კურსები
+    try:
+        url = "https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/ka/json"
+        response = requests.get(url)
+        valutis_kursebi = []
+        data = response.json()
+        valutis_kursebi = [val for val in data[0]["currencies"] if val["code"] in ("USD", "EUR")]
+    except requests.exceptions.RequestException as e:
+        logging.error(f"API request failed: {e}")
+    return render_template('index.html', form=form, joblist=joblist,valutis_kursebi=valutis_kursebi)
+
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -71,15 +82,22 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user and check_password_hash(user.password, form.password.data):
+    if request.method == 'POST':
+        username = form.username.data or ""
+        password = form.password.data or ""
+        user = User.query.filter_by(username=username).first() if username else None
+
+
+        if form.validate_on_submit() and user and check_password_hash(user.password, password):
+
             session["user_id"] = user.id
             session["username"] = user.username
             flash(f"მოგესალმები {user.username}!", "success")
-            return redirect (url_for('index'))
+            logging.info(f"SUCCESSFUL login: username={user.username}")
+            return redirect(url_for('index'))
         else:
             flash("არასწორი მომხმარებელი ან პაროლი!", "danger")
+            logging.warning(f"FAILED login attempt: username={username}")
     return render_template('login.html', form=form)
 
 
@@ -139,6 +157,7 @@ def add_job():
         )
         db.session.add(new_job)
         db.session.commit()
+        logging.info(f"SUCCESSFUL Added job: username={session["username"]}")
         return redirect (url_for('index'))
     return render_template('add_job.html' , form=form )
 
@@ -172,6 +191,7 @@ def edit_job(job_id):
         job.job_desc_detailed = form.job_desc_detailed.data
         db.session.commit()
         flash("ვაკანსია წარმატებით განახლდა", "success")
+        logging.info(f"SUCCESSFUL Edited job: username={session["username"]}")
         return redirect(url_for("job_details", job_id=job.id))
 
     return render_template("edit_job.html", form=form, job=job)
@@ -188,6 +208,7 @@ def delete_job(job_id):
 
     db.session.delete(job)
     db.session.commit()
+    logging.info(f"SUCCESSFUL Deleted job: username={session["username"]}")
     flash("ვაკანსია წარმატებით წაიშალა", "success")
     return redirect(url_for("index"))
 

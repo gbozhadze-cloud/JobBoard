@@ -47,6 +47,18 @@
         </div>
         {% endfor %}
     </div>
+    <div>
+              <h4 class="mt-4">ვალუტის კურსები</h4>
+            <ul class="list-group mb-4">
+            {% for val in valutis_kursebi %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ val.code }} - {{ val.name }} ({{ val.quantity }})
+            <span class="badge bg-primary rounded-pill">{{ val.rateFormated }} ₾</span>
+            </li>
+    {% endfor %}
+</ul>
+</ul>
+    </div>
 
 </div>
 {% endblock %}
