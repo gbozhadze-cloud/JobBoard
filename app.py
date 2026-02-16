@@ -7,7 +7,9 @@ from models import *
 from db import *
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 import logging
+import uuid
 
 
 app = Flask(__name__)
@@ -121,10 +123,13 @@ def profile():
         # სურათის ატვირთვა
         if form.profile_pic.data:
             image_file = form.profile_pic.data
-            filename = image_file.filename
-            image_path = os.path.join(app.config['UPLOAD_FOLDER'],filename)
+            # ექსტენშენი ავიღეთ
+            _, ext = os.path.splitext(secure_filename(image_file.filename))
+            # დავაგენერირეთ უნიკალური იდენტიფიკატორი და მივაბით თავის ექსტენშენი
+            unique_name = f"{uuid.uuid4().hex}{ext}"
+            image_path = os.path.join(app.config['UPLOAD_FOLDER'],unique_name)
             image_file.save(image_path)
-            user.profile_pic = filename
+            user.profile_pic = unique_name
 
         db.session.commit()
         session['username'] = user.username
