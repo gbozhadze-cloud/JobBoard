@@ -97,3 +97,105 @@
 2026-02-13 17:18:19,090 - INFO - 127.0.0.1 - - [13/Feb/2026 17:18:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
 2026-02-13 17:18:23,986 - INFO - 127.0.0.1 - - [13/Feb/2026 17:18:23] "GET /job/1 HTTP/1.1" 200 -
 2026-02-13 17:18:27,138 - INFO - 127.0.0.1 - - [13/Feb/2026 17:18:27] "GET / HTTP/1.1" 200 -
+2026-02-16 11:39:31,184 - INFO - SUCCESSFUL login: username=testgiga
+2026-02-16 13:38:25,749 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-16 13:38:25,749 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-16 13:38:25,757 - INFO -  * Restarting with stat
+2026-02-16 13:38:29,245 - WARNING -  * Debugger is active!
+2026-02-16 13:38:29,252 - INFO -  * Debugger PIN: 102-024-113
+2026-02-16 13:38:38,806 - INFO - 127.0.0.1 - - [16/Feb/2026 13:38:38] "GET / HTTP/1.1" 200 -
+2026-02-16 13:38:39,433 - INFO - 127.0.0.1 - - [16/Feb/2026 13:38:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-16 13:38:44,435 - INFO - 127.0.0.1 - - [16/Feb/2026 13:38:44] "GET /register HTTP/1.1" 200 -
+2026-02-16 13:38:49,446 - INFO - 127.0.0.1 - - [16/Feb/2026 13:38:49] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:38:49,547 - INFO - 127.0.0.1 - - [16/Feb/2026 13:38:49] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:38:49,592 - INFO - 127.0.0.1 - - [16/Feb/2026 13:38:49] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:38:58,715 - WARNING - FAILED login attempt: username=giga
+2026-02-16 13:38:58,721 - INFO - 127.0.0.1 - - [16/Feb/2026 13:38:58] "POST /login HTTP/1.1" 200 -
+2026-02-16 13:39:02,942 - WARNING - FAILED login attempt: username=giga2
+2026-02-16 13:39:02,947 - INFO - 127.0.0.1 - - [16/Feb/2026 13:39:02] "POST /login HTTP/1.1" 200 -
+2026-02-16 13:39:08,444 - WARNING - FAILED login attempt: username=giga
+2026-02-16 13:39:08,462 - INFO - 127.0.0.1 - - [16/Feb/2026 13:39:08] "POST /login HTTP/1.1" 200 -
+2026-02-16 13:39:10,459 - INFO - 127.0.0.1 - - [16/Feb/2026 13:39:10] "GET /register HTTP/1.1" 200 -
+2026-02-16 13:39:21,342 - INFO - 127.0.0.1 - - [16/Feb/2026 13:39:21] "[32mPOST /register HTTP/1.1[0m" 302 -
+2026-02-16 13:39:21,361 - INFO - 127.0.0.1 - - [16/Feb/2026 13:39:21] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:39:34,188 - INFO - SUCCESSFUL login: username=giga
+2026-02-16 13:39:34,191 - INFO - 127.0.0.1 - - [16/Feb/2026 13:39:34] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-16 13:39:35,421 - INFO - 127.0.0.1 - - [16/Feb/2026 13:39:35] "GET / HTTP/1.1" 200 -
+2026-02-16 13:39:39,298 - INFO - 127.0.0.1 - - [16/Feb/2026 13:39:39] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-02-16 13:39:39,317 - INFO - 127.0.0.1 - - [16/Feb/2026 13:39:39] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:39:41,405 - INFO - 127.0.0.1 - - [16/Feb/2026 13:39:41] "GET /register HTTP/1.1" 200 -
+2026-02-16 13:39:47,646 - INFO - 127.0.0.1 - - [16/Feb/2026 13:39:47] "POST /register HTTP/1.1" 200 -
+2026-02-16 13:39:50,409 - INFO - 127.0.0.1 - - [16/Feb/2026 13:39:50] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:40:00,570 - INFO - SUCCESSFUL login: username=giga
+2026-02-16 13:40:00,572 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:00] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-16 13:40:01,747 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:01] "GET / HTTP/1.1" 200 -
+2026-02-16 13:40:13,182 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:13] "GET / HTTP/1.1" 200 -
+2026-02-16 13:40:14,369 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:14] "GET /add_job HTTP/1.1" 200 -
+2026-02-16 13:40:23,594 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:23] "GET /profile HTTP/1.1" 200 -
+2026-02-16 13:40:24,074 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:24] "[36mGET /static/images/default.jpg HTTP/1.1[0m" 304 -
+2026-02-16 13:40:31,288 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:31] "[32mPOST /profile HTTP/1.1[0m" 302 -
+2026-02-16 13:40:31,310 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:31] "GET /profile HTTP/1.1" 200 -
+2026-02-16 13:40:31,413 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:31] "GET /static/images/Screenshot%202026-02-12%20132417.png HTTP/1.1" 200 -
+2026-02-16 13:40:33,119 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:33] "GET /add_job HTTP/1.1" 200 -
+2026-02-16 13:40:33,806 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:33] "GET /profile HTTP/1.1" 200 -
+2026-02-16 13:40:33,863 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:33] "[36mGET /static/images/Screenshot%202026-02-12%20132417.png HTTP/1.1[0m" 304 -
+2026-02-16 13:40:35,196 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:35] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-02-16 13:40:35,218 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:35] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:40:37,778 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:37] "GET / HTTP/1.1" 200 -
+2026-02-16 13:40:41,056 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:41] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:40:41,805 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:41] "GET /register HTTP/1.1" 200 -
+2026-02-16 13:40:43,921 - INFO - 127.0.0.1 - - [16/Feb/2026 13:40:43] "GET / HTTP/1.1" 200 -
+2026-02-16 13:41:14,593 - INFO - 127.0.0.1 - - [16/Feb/2026 13:41:14] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:45:19,619 - INFO -  * Detected change in 'C:\\Users\\Administrator\\PycharmProjects\\JobBoard\\forms.py', reloading
+2026-02-16 13:45:29,269 - INFO -  * Restarting with stat
+2026-02-16 13:45:38,382 - WARNING -  * Debugger is active!
+2026-02-16 13:45:38,390 - INFO -  * Debugger PIN: 102-024-113
+2026-02-16 13:46:00,524 - INFO -  * Detected change in 'C:\\Users\\Administrator\\PycharmProjects\\JobBoard\\app.py', reloading
+2026-02-16 13:46:30,434 - INFO -  * Restarting with stat
+2026-02-16 13:46:35,633 - WARNING -  * Debugger is active!
+2026-02-16 13:46:35,642 - INFO -  * Debugger PIN: 102-024-113
+2026-02-16 13:46:56,885 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-16 13:46:56,885 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-16 13:46:56,892 - INFO -  * Restarting with stat
+2026-02-16 13:47:00,169 - WARNING -  * Debugger is active!
+2026-02-16 13:47:00,178 - INFO -  * Debugger PIN: 102-024-113
+2026-02-16 13:48:16,791 - INFO - 127.0.0.1 - - [16/Feb/2026 13:48:16] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:48:18,195 - INFO - 127.0.0.1 - - [16/Feb/2026 13:48:18] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:49:12,206 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-16 13:49:12,207 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-16 13:49:12,214 - INFO -  * Restarting with stat
+2026-02-16 13:49:15,802 - WARNING -  * Debugger is active!
+2026-02-16 13:49:15,810 - INFO -  * Debugger PIN: 102-024-113
+2026-02-16 13:49:16,435 - INFO - 127.0.0.1 - - [16/Feb/2026 13:49:16] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:49:18,777 - INFO - 127.0.0.1 - - [16/Feb/2026 13:49:18] "GET /register HTTP/1.1" 200 -
+2026-02-16 13:49:30,565 - INFO - 127.0.0.1 - - [16/Feb/2026 13:49:30] "[32mPOST /register HTTP/1.1[0m" 302 -
+2026-02-16 13:49:32,784 - INFO - 127.0.0.1 - - [16/Feb/2026 13:49:32] "GET /login HTTP/1.1" 200 -
+2026-02-16 13:49:45,565 - INFO - SUCCESSFUL login: username=giga
+2026-02-16 13:49:45,568 - INFO - 127.0.0.1 - - [16/Feb/2026 13:49:45] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-16 13:49:47,615 - INFO - 127.0.0.1 - - [16/Feb/2026 13:49:47] "GET / HTTP/1.1" 200 -
+2026-02-16 13:49:50,072 - INFO - 127.0.0.1 - - [16/Feb/2026 13:49:50] "GET /add_job HTTP/1.1" 200 -
+2026-02-16 13:50:08,396 - INFO - SUCCESSFUL Added job: username=giga
+2026-02-16 13:50:08,397 - INFO - 127.0.0.1 - - [16/Feb/2026 13:50:08] "[32mPOST /add_job HTTP/1.1[0m" 302 -
+2026-02-16 13:50:09,523 - INFO - 127.0.0.1 - - [16/Feb/2026 13:50:09] "GET / HTTP/1.1" 200 -
+2026-02-16 13:50:14,070 - INFO - 127.0.0.1 - - [16/Feb/2026 13:50:14] "GET /job/1 HTTP/1.1" 200 -
+2026-02-16 13:50:18,935 - INFO - 127.0.0.1 - - [16/Feb/2026 13:50:18] "GET / HTTP/1.1" 200 -
+2026-02-16 13:50:20,239 - INFO - 127.0.0.1 - - [16/Feb/2026 13:50:20] "GET /job/1 HTTP/1.1" 200 -
+2026-02-16 13:51:16,749 - INFO -  * Detected change in 'C:\\Users\\Administrator\\PycharmProjects\\JobBoard\\forms.py', reloading
+2026-02-16 13:51:51,790 - INFO -  * Restarting with stat
+2026-02-16 13:51:56,846 - WARNING -  * Debugger is active!
+2026-02-16 13:51:56,874 - INFO -  * Debugger PIN: 102-024-113
+2026-02-16 13:53:31,112 - INFO - 127.0.0.1 - - [16/Feb/2026 13:53:31] "GET / HTTP/1.1" 200 -
+2026-02-16 13:53:36,212 - INFO - 127.0.0.1 - - [16/Feb/2026 13:53:36] "GET /job/1 HTTP/1.1" 200 -
+2026-02-16 13:54:15,369 - INFO - 127.0.0.1 - - [16/Feb/2026 13:54:15] "GET / HTTP/1.1" 200 -
+2026-02-16 13:54:19,396 - INFO - 127.0.0.1 - - [16/Feb/2026 13:54:19] "GET /job/1 HTTP/1.1" 200 -
+2026-02-16 13:55:31,779 - INFO - 127.0.0.1 - - [16/Feb/2026 13:55:31] "GET /job/1 HTTP/1.1" 200 -
+2026-02-16 13:55:34,861 - INFO - 127.0.0.1 - - [16/Feb/2026 13:55:34] "GET /job/1/edit HTTP/1.1" 200 -
+2026-02-16 13:55:37,599 - INFO - 127.0.0.1 - - [16/Feb/2026 13:55:37] "GET /job/1 HTTP/1.1" 200 -
+2026-02-16 13:55:40,346 - INFO - 127.0.0.1 - - [16/Feb/2026 13:55:40] "GET / HTTP/1.1" 200 -
+2026-02-16 13:55:42,816 - INFO - 127.0.0.1 - - [16/Feb/2026 13:55:42] "GET /author/giga HTTP/1.1" 200 -
+2026-02-16 13:55:47,492 - INFO - 127.0.0.1 - - [16/Feb/2026 13:55:47] "GET / HTTP/1.1" 200 -
+2026-02-16 13:55:50,068 - INFO - 127.0.0.1 - - [16/Feb/2026 13:55:50] "GET / HTTP/1.1" 200 -
+2026-02-16 13:55:51,576 - INFO - 127.0.0.1 - - [16/Feb/2026 13:55:51] "GET /add_job HTTP/1.1" 200 -

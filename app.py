@@ -153,7 +153,8 @@ def add_job():
             job_desc_detailed = form.job_desc_detailed.data,
             company = form.company.data,
             salary=form.salary.data,
-            location=form.location.data
+            location=form.location.data,
+            category=form.category.data
         )
         db.session.add(new_job)
         db.session.commit()

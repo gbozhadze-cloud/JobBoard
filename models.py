@@ -20,4 +20,5 @@ class Jobs(db.Model):
     location = db.Column(db.String(200), nullable=False)
     author = db.Column(db.String(200), nullable=False)
     date_added = db.Column(db.Date, nullable=False, default=date.today)
+    category = db.Column(db.String(100), nullable=False)
 

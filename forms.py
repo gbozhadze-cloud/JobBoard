@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, FileField, IntegerField, SubmitField, PasswordField, TextAreaField
+from wtforms import StringField, EmailField, FileField, IntegerField, SubmitField, PasswordField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, EqualTo, Email, ValidationError, Length
 from models import *
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import  check_password_hash
 from flask_wtf.file import FileAllowed
 
 
@@ -32,7 +32,6 @@ class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
-
     user = None
 
     def validate(self, extra_validators=None):
@@ -56,10 +55,21 @@ class AddJobForm(FlaskForm):
     salary = IntegerField('განსაზღვრული ხელფასი', validators=[DataRequired()])
     location = StringField('ლოკაცია', validators=[DataRequired(), Length(max=200)])
     submit = SubmitField('Post')
+    category = SelectField(
+        'კატეგორია',
+        choices=[
+            ('IT', 'IT'),
+            ('Finance', 'Finance'),
+            ('Marketing', 'Marketing'),
+            ('HR', 'HR')
+        ],
+        validators=[DataRequired()]
+    )
 
 class JobListForm(FlaskForm):
     id = StringField('id')
     title = StringField('ვაკანსიის დასახელება')
+    category = StringField('კატეგორია')
     job_desc = StringField('ვაკანსიის აღწერა')
     job_desc_detailed = TextAreaField("დეტალური აღწერა")
     company = StringField('კომპანიის დასახელება')
