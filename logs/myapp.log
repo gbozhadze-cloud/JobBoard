@@ -46,3 +46,54 @@
 2026-02-13 17:11:06,156 - WARNING -  * Debugger is active!
 2026-02-13 17:11:06,167 - INFO -  * Debugger PIN: 102-024-113
 2026-02-13 17:11:06,471 - INFO - SUCCESSFUL login: username=testgiga
+2026-02-13 17:14:16,220 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-13 17:14:16,220 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-13 17:14:16,227 - INFO -  * Restarting with stat
+2026-02-13 17:14:19,623 - WARNING -  * Debugger is active!
+2026-02-13 17:14:19,631 - INFO -  * Debugger PIN: 102-024-113
+2026-02-13 17:14:28,057 - INFO - 127.0.0.1 - - [13/Feb/2026 17:14:28] "GET / HTTP/1.1" 200 -
+2026-02-13 17:14:33,916 - INFO - 127.0.0.1 - - [13/Feb/2026 17:14:33] "GET / HTTP/1.1" 200 -
+2026-02-13 17:14:38,528 - INFO - 127.0.0.1 - - [13/Feb/2026 17:14:38] "[35m[1mGET /profile HTTP/1.1[0m" 500 -
+2026-02-13 17:14:39,663 - INFO - 127.0.0.1 - - [13/Feb/2026 17:14:39] "[36mGET /profile?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-13 17:14:39,747 - INFO - 127.0.0.1 - - [13/Feb/2026 17:14:39] "[36mGET /profile?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-13 17:14:40,607 - INFO - 127.0.0.1 - - [13/Feb/2026 17:14:40] "GET /profile?__debugger__=yes&cmd=resource&f=console.png&s=tL04VXXsI1r5JSfmqf1h HTTP/1.1" 200 -
+2026-02-13 17:14:40,671 - INFO - 127.0.0.1 - - [13/Feb/2026 17:14:40] "[36mGET /profile?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-13 17:14:47,647 - INFO - 127.0.0.1 - - [13/Feb/2026 17:14:47] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-02-13 17:14:47,697 - INFO - 127.0.0.1 - - [13/Feb/2026 17:14:47] "GET /login HTTP/1.1" 200 -
+2026-02-13 17:14:57,052 - INFO - 127.0.0.1 - - [13/Feb/2026 17:14:57] "GET / HTTP/1.1" 200 -
+2026-02-13 17:14:58,970 - INFO - 127.0.0.1 - - [13/Feb/2026 17:14:58] "GET /login HTTP/1.1" 200 -
+2026-02-13 17:14:59,926 - INFO - 127.0.0.1 - - [13/Feb/2026 17:14:59] "GET /about HTTP/1.1" 200 -
+2026-02-13 17:15:01,689 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:01] "GET /login HTTP/1.1" 200 -
+2026-02-13 17:15:02,318 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:02] "GET / HTTP/1.1" 200 -
+2026-02-13 17:15:02,360 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:02] "GET /register HTTP/1.1" 200 -
+2026-02-13 17:15:06,330 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:06] "[32mGET /profile HTTP/1.1[0m" 302 -
+2026-02-13 17:15:06,359 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:06] "GET /login HTTP/1.1" 200 -
+2026-02-13 17:15:16,401 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:16] "[32mGET /add_job HTTP/1.1[0m" 302 -
+2026-02-13 17:15:16,419 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:16] "GET /login HTTP/1.1" 200 -
+2026-02-13 17:15:18,318 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:18] "GET /register HTTP/1.1" 200 -
+2026-02-13 17:15:19,914 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:19] "GET /login HTTP/1.1" 200 -
+2026-02-13 17:15:22,995 - WARNING - FAILED login attempt: username=giga
+2026-02-13 17:15:23,000 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:23] "POST /login HTTP/1.1" 200 -
+2026-02-13 17:15:26,117 - WARNING - FAILED login attempt: username=giga
+2026-02-13 17:15:26,122 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:26] "POST /login HTTP/1.1" 200 -
+2026-02-13 17:15:27,589 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:27] "GET /register HTTP/1.1" 200 -
+2026-02-13 17:15:44,317 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:44] "[32mPOST /register HTTP/1.1[0m" 302 -
+2026-02-13 17:15:44,341 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:44] "GET /login HTTP/1.1" 200 -
+2026-02-13 17:15:56,256 - INFO - SUCCESSFUL login: username=giga2
+2026-02-13 17:15:56,259 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:56] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-13 17:15:57,388 - INFO - 127.0.0.1 - - [13/Feb/2026 17:15:57] "GET / HTTP/1.1" 200 -
+2026-02-13 17:16:00,840 - INFO - 127.0.0.1 - - [13/Feb/2026 17:16:00] "GET /add_job HTTP/1.1" 200 -
+2026-02-13 17:16:28,832 - INFO - SUCCESSFUL Added job: username=giga2
+2026-02-13 17:16:28,833 - INFO - 127.0.0.1 - - [13/Feb/2026 17:16:28] "[32mPOST /add_job HTTP/1.1[0m" 302 -
+2026-02-13 17:16:30,005 - INFO - 127.0.0.1 - - [13/Feb/2026 17:16:30] "GET / HTTP/1.1" 200 -
+2026-02-13 17:17:23,688 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-13 17:17:23,689 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-13 17:17:23,695 - INFO -  * Restarting with stat
+2026-02-13 17:17:26,736 - WARNING -  * Debugger is active!
+2026-02-13 17:17:26,744 - INFO -  * Debugger PIN: 102-024-113
+2026-02-13 17:18:18,335 - INFO - 127.0.0.1 - - [13/Feb/2026 17:18:18] "GET / HTTP/1.1" 200 -
+2026-02-13 17:18:19,090 - INFO - 127.0.0.1 - - [13/Feb/2026 17:18:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-13 17:18:23,986 - INFO - 127.0.0.1 - - [13/Feb/2026 17:18:23] "GET /job/1 HTTP/1.1" 200 -
+2026-02-13 17:18:27,138 - INFO - 127.0.0.1 - - [13/Feb/2026 17:18:27] "GET / HTTP/1.1" 200 -
